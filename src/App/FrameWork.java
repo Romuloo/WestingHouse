@@ -1,12 +1,29 @@
+/**
+ Copyright [2020] [Javier Linares Castrillón]
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ http://www.apache.org/licenses/LICENSE-2.0
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ */
+
 package App;
 
 import domain.Algoritmos;
-import domain.data.Habilidad;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+/**
+ *
+ * @author Javier Linares Castrillón
+ */
 
 public class FrameWork {
 
@@ -31,6 +48,16 @@ public class FrameWork {
     private static JLabel l18 = new JLabel("B");
     private static JLabel l19 = new JLabel("C");
     private static JLabel l20 = new JLabel("D");
+    private static JLabel l21 = new JLabel("Tiempo Promedio");
+    private static JLabel l22 = new JLabel("A");
+    private static JLabel l23 = new JLabel("B");
+    private static JLabel l24 = new JLabel("C");
+    private static JLabel l25 = new JLabel("D");
+    private static JLabel l26 = new JLabel("Holgura (0.X)");
+    private static JLabel l27 = new JLabel("Tiempo total");
+    private static JLabel l28 = new JLabel("Tiempo estándar");
+
+
 
 
     private static JTextField a1 = new JTextField();
@@ -73,18 +100,29 @@ public class FrameWork {
     private static JTextField m43 = new JTextField();
     private static JTextField m44 = new JTextField();
 
-    private static JTextField sa = new JTextField();
-    private static JTextField sb = new JTextField();
-    private static JTextField sc = new JTextField();
-    private static JTextField sd = new JTextField();
+    private static JTextField ca = new JTextField();
+    private static JTextField cb = new JTextField();
+    private static JTextField cc = new JTextField();
+    private static JTextField cd = new JTextField();
 
 
+    private static JTextField ta = new JTextField();
+    private static JTextField tb = new JTextField();
+    private static JTextField tc = new JTextField();
+    private static JTextField td = new JTextField();
 
-    private static JButton b = new JButton("Resolver");
+    private static JTextField h = new JTextField();
+    private static JTextField tt = new JTextField();
+    private static JTextField te = new JTextField();
+
+
+    private static JButton bt = new JButton("Resolver");
 
 
     private static String A1, A2, A3, A4, B1, B2, B3, B4, C1, C2, C3, C4, D1, D2, D3, D4;
     private static double M11, M12, M13, M14, M21, M22, M23, M24, M31, M32, M33, M34, M41, M42, M43, M44;
+
+    private static double a, b, c ,d, hol, aux, aux2;
 
     public static void begin(){
 
@@ -96,7 +134,7 @@ public class FrameWork {
         f.setVisible(true);
         f.setResizable(false);
         f.setLayout(null);
-
+        f.setBackground(Color.orange);
 
       initComponentes();
 
@@ -106,11 +144,12 @@ public class FrameWork {
     private static void initComponentes(){
         f.add(l1);f.add(l2); f.add(l3); f.add(l4);f.add(l5);;f.add(l7);f.add(l8);f.add(l9);f.add(l10);
         f.add(l12);f.add(l13);f.add(l14);f.add(l15);f.add(l16);f.add(l17);f.add(l18);f.add(l19);f.add(l20);
+        f.add(l21);f.add(l22);f.add(l23);f.add(l24);f.add(l25);f.add(l26);f.add(l27);f.add(l28);
 
         f.add(a1);f.add(a2);f.add(a3);f.add(a4);f.add(b1);f.add(b2);f.add(b3);f.add(b4);f.add(c1);f.add(c2);f.add(c3);f.add(c4);
         f.add(d1);f.add(d2);f.add(d3);f.add(d4);f.add(m11);f.add(m12);f.add(m13);f.add(m14);f.add(m21);f.add(m22);f.add(m23);f.add(m24);
         f.add(m31);f.add(m32);f.add(m33);f.add(m34);f.add(m41);f.add(m42);f.add(m43);f.add(m44);
-        f.add(sa);f.add(sb);f.add(sc);f.add(sd);
+        f.add(ca);f.add(cb);f.add(cc);f.add(cd);f.add(ta);f.add(tb);f.add(tc);f.add(td);f.add(h);f.add(tt);f.add(te);
 
         l1.setBounds(30, 30, 100,50);
         l1.setFont(font);
@@ -205,15 +244,96 @@ public class FrameWork {
         l20.setBounds(875, 360, 50, 50);
         l20.setFont(font);
 
-        sa.setBounds(160, 360, 80, 50);
-        sb.setBounds(350, 360, 80, 50);
-        sc.setBounds(705, 360, 80, 50);
-        sd.setBounds(905, 360, 80, 50);
+        ca.setBounds(160, 360, 80, 50);
+        cb.setBounds(350, 360, 80, 50);
+        cc.setBounds(705, 360, 80, 50);
+        cd.setBounds(905, 360, 80, 50);
 
+        l21.setBounds(455, 440, 200, 50);
+        l21.setFont(font);
 
-        f.add(b);
-        b.setBounds(945, 130, 100,100);
-        b.addActionListener(new ActionListener() {
+        l22.setBounds(130, 500, 50, 50);
+        l22.setFont(font);
+        l23.setBounds(320, 500, 50, 50);
+        l23.setFont(font);
+        l24.setBounds(675, 500, 50, 50);
+        l24.setFont(font);
+        l25.setBounds(875, 500, 50, 50);
+        l25.setFont(font);
+
+        ta.setBounds(160, 500, 80, 50);
+        tb.setBounds(350, 500, 80, 50);
+        tc.setBounds(705, 500, 80, 50);
+        td.setBounds(905, 500, 80, 50);
+
+        l26.setBounds(945, 190, 120,50);
+        l26.setFont(font);
+
+        h.setBounds(950, 230, 90, 50);
+
+        l27.setBounds(130, 600, 130, 50);
+        l27.setFont(font);
+
+        l28.setBounds(675, 600, 150, 50);
+        l28.setFont(font);
+
+        tt.setBounds(235, 600, 100, 50);
+        te.setBounds(815, 600, 100, 50);
+
+        tt.setOpaque(false);
+        tt.setBorder(null);
+        tt.setFont(font);
+        tt.setForeground(Color.red);
+
+        te.setOpaque(false);
+        te.setBorder(null);
+        te.setFont(font);
+        te.setForeground(Color.red);
+
+        ca.setOpaque(false);
+        ca.setBorder(null);
+        ca.setFont(font);
+        ca.setForeground(Color.red);
+
+        cb.setOpaque(false);
+        cb.setBorder(null);
+        cb.setFont(font);
+        cb.setForeground(Color.red);
+
+        cc.setOpaque(false);
+        cc.setBorder(null);
+        cc.setFont(font);
+        cc.setForeground(Color.red);
+
+        cd.setOpaque(false);
+        cd.setBorder(null);
+        cd.setFont(font);
+        cd.setForeground(Color.red);
+
+        ta.setOpaque(false);
+        ta.setBorder(null);
+        ta.setFont(font);
+        ta.setForeground(Color.red);
+
+        tb.setOpaque(false);
+        tb.setBorder(null);
+        tb.setFont(font);
+        tb.setForeground(Color.red);
+
+        tc.setOpaque(false);
+        tc.setBorder(null);
+        tc.setFont(font);
+        tc.setForeground(Color.red);
+
+        td.setOpaque(false);
+        td.setBorder(null);
+        td.setFont(font);
+        td.setForeground(Color.red);
+
+        f.add(bt);
+        bt.setBounds(945, 80, 100,100);
+        bt.setBorderPainted(true);
+        bt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 A1= a1.getText(); A2= a2.getText(); A3= a3.getText(); A4= a4.getText();  B1= b1.getText();  B2= b2.getText();  B3= b3.getText();
@@ -241,20 +361,42 @@ public class FrameWork {
                     M24 = Double.parseDouble(m24.getText());
                     M34 = Double.parseDouble(m34.getText());
                     M44 = Double.parseDouble(m44.getText());
+
+                    hol = Double.parseDouble(h.getText());
                     
                 }catch (Exception ex){
                     System.out.println("No ha inicializado todos los espacios");
                 }
 
-                sa.setText("" + Algoritmos.calificaciones(A1, A2, A3, A4));
-                sb.setText("" + Algoritmos.calificaciones(B1, B2, B3, B4));
-                sc.setText("" + Algoritmos.calificaciones(C1, C2, C3, C4));
-                sd.setText("" + Algoritmos.calificaciones(D1, D2, D3, D4));
+                ca.setText("" + Algoritmos.calificaciones(A1, A2, A3, A4));
+                cb.setText("" + Algoritmos.calificaciones(B1, B2, B3, B4));
+                cc.setText("" + Algoritmos.calificaciones(C1, C2, C3, C4));
+                cd.setText("" + Algoritmos.calificaciones(D1, D2, D3, D4));
+
+                a = Algoritmos.round(Algoritmos.calificaciones(A1, A2, A3, A4) * Algoritmos.medias(M11, M21, M31, M41), 5);
+                b = Algoritmos.round(Algoritmos.calificaciones(B1, B2, B3, B4) * Algoritmos.medias(M12, M22, M32, M42), 5);
+                c = Algoritmos.round(Algoritmos.calificaciones(C1, C2, C3, C4) * Algoritmos.medias(M13, M23, M33, M43),5);
+                d = Algoritmos.round(Algoritmos.calificaciones(D1, D2, D3, D4) * Algoritmos.medias(M14, M24, M34, M44), 5);
+
+
+                ta.setText("" + a);
+                tb.setText("" + b);
+                tc.setText("" + c);
+                td.setText("" + d);
+
+                aux = a + b + c + d;
+                tt.setText("" + aux);
+
+                aux2 = Algoritmos.round(aux / (1 - hol), 4);
+                te.setText("" + aux2);
+
 
 
 
             }
         });
+
+
     }
 
 
