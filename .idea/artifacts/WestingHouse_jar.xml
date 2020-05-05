@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="WestingHouse:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/WestingHouse_jar</output-path>
+    <root id="archive" name="WestingHouse.jar">
+      <element id="module-output" name="WestingHouse" />
+    </root>
+  </artifact>
+</component>
