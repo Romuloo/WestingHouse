@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="WestingHouse">
+    <output-path>$PROJECT_DIR$/out/artifacts/WestingHouse</output-path>
+    <root id="root">
+      <element id="archive" name="WestingHouse.jar">
+        <element id="module-output" name="WestingHouse" />
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -76,8 +76,14 @@ public class Algoritmos {
     }
 
     public static double medias(double y1,double y2,double y3,double y4){
-        double aux =(y1 + y2 + y3 + y4);
-        return aux/4;
+        if(y1 == 0.0 && y2 == 0.0 && y3 == 0.0 && y4 == 0.0){
+            return 0.0;
+        }
+        else{
+            double aux =(y1 + y2 + y3 + y4);
+            return aux/4;
+        }
+
     }
 
     public static double round(double valor, int decimales) {

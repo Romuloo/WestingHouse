@@ -19,6 +19,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  *
@@ -123,7 +124,7 @@ public class FrameWork {
     private static double M11, M12, M13, M14, M21, M22, M23, M24, M31, M32, M33, M34, M41, M42, M43, M44;
 
     private static double a, b, c ,d, hol, aux, aux2;
-
+    private static ArrayList<Double> ms = new ArrayList();
     public static void begin(){
 
 
@@ -340,33 +341,59 @@ public class FrameWork {
                 B4= b4.getText(); C1= c1.getText(); C2= c2.getText(); C3= c3.getText();  C4= c4.getText();  D1= d1.getText();  D2= d2.getText();
                 D3= d3.getText(); D4= d4.getText();
 
+                ms.add(M11); ms.add(M12); ms.add(M13); ms.add(M14); ms.add(M21); ms.add(M22); ms.add(M23); ms.add(M24); ms.add(M31); ms.add(M32);
+                ms.add(M33); ms.add(M34); ms.add(M41); ms.add(M42); ms.add(M43); ms.add(M44);
 
+                try{
+                    hol = Double.parseDouble(h.getText());
+                }catch(Exception e1){
+                    System.out.println("No se inicializó la holgura");
+                }
                 try {
+
                     M11 = Double.parseDouble(m11.getText());
                     M21 = Double.parseDouble(m21.getText());
                     M31 = Double.parseDouble(m31.getText());
                     M41 = Double.parseDouble(m41.getText());
 
+
+                }catch (Exception ex){
+                    System.out.println("No ha inicializado todos los espacios");
+                }
+
+
+
+                try{
                     M12 = Double.parseDouble(m12.getText());
                     M22 = Double.parseDouble(m22.getText());
                     M32 = Double.parseDouble(m32.getText());
                     M42 = Double.parseDouble(m42.getText());
+                }catch (Exception ex){
+                System.out.println("No ha inicializado todos los espacios");
+            }
+
+                try{
 
                     M13 = Double.parseDouble(m13.getText());
                     M23 = Double.parseDouble(m23.getText());
                     M33 = Double.parseDouble(m33.getText());
                     M43 = Double.parseDouble(m43.getText());
+                }catch (Exception ex){
+                    System.out.println("No ha inicializado todos los espacios");
+                }
 
+                try{
                     M14 = Double.parseDouble(m14.getText());
                     M24 = Double.parseDouble(m24.getText());
                     M34 = Double.parseDouble(m34.getText());
                     M44 = Double.parseDouble(m44.getText());
 
-                    hol = Double.parseDouble(h.getText());
-                    
-                }catch (Exception ex){
-                    System.out.println("No ha inicializado todos los espacios");
-                }
+                 }catch (Exception ex){
+                System.out.println("No ha inicializado todos los espacios");
+                 }
+
+
+
 
                 ca.setText("" + Algoritmos.calificaciones(A1, A2, A3, A4));
                 cb.setText("" + Algoritmos.calificaciones(B1, B2, B3, B4));
@@ -379,19 +406,18 @@ public class FrameWork {
                 d = Algoritmos.round(Algoritmos.calificaciones(D1, D2, D3, D4) * Algoritmos.medias(M14, M24, M34, M44), 5);
 
 
+
                 ta.setText("" + a);
                 tb.setText("" + b);
                 tc.setText("" + c);
                 td.setText("" + d);
+
 
                 aux = a + b + c + d;
                 tt.setText("" + aux);
 
                 aux2 = Algoritmos.round(aux / (1 - hol), 4);
                 te.setText("" + aux2);
-
-
-
 
             }
         });
